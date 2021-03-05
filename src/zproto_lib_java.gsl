@@ -15,8 +15,28 @@ function java_class_name (name)
     return "$(string.replace (neatName, '_'))"
 endfunction
 
+function java_var_name(name)
+    my.neat_name = "$(java_class_name(Name))"
+    my.first_char = string.substr(my.neat_name, 0, 0)
+
+    return "$(my.first_char)" + string.substr(my.neat_name, 1, string.length(my.neat_name))
+endfunction
+
 function java_protocol_class ()
     neatClass = "$(Protocol_class)"
     return "$(string.replace (neatClass, '_'))"
 endfunction
 
+function java_package_name (package)
+    return "$(string.replace (package, '/|.'))"
+endfunction
+
+function stem_s (name)
+    my.retval = "$(Name)"
+    my.last_char = string.substr(my.retval, string.length(my.retval)-1, string.length(my.retval))
+    if my.last_char = "s"
+        my.retval = string.substr(my.retval, 0, string.length(my.retval)-2)
+    endif
+
+    return my.retval
+endfunction
